@@ -1,0 +1,17 @@
+{
+  "name": "andejobs-frontend",
+  "version": "0.0.0",
+  "authors": [
+    "Susan <susan.adelokiki@andela.co>"
+  ],
+  "description": "front end for Andejobs app",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
