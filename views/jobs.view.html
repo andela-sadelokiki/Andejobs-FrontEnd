@@ -1,0 +1,21 @@
+<div>
+  <md-toolbar layout="row">
+     <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Andejobs</h1>
+  </md-toolbar>
+     <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="item in jobs">
+        <div class="md-list-item-text">
+          <h3>{{item.title}}</h3>
+          <h4>{{item.location}}</h4>
+          <p>{{item.closing_date}}</p>
+        </div>
+           <md-button class="md-raised md-warn" style="width: 112px; text-align: center !important;">Apply</md-button>
+        <div layout="row" layout-align="start center">
+        <md-divider ng-if="!$last"></md-divider>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+
+</div>
