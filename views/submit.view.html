@@ -1,0 +1,36 @@
+  <div layout="row" >
+    <div flex >
+      </div>
+        <div flex >
+          <md-content>
+            <md-card>
+                <md-card-content>
+                 <md-toolbar class="md-primary">
+                    <h1 class="md-toolbar-tools">Submit Your Application</h1>
+                  </md-toolbar>
+                   <md-content layout-padding class="autoScroll">
+                    <md-input-container class="md-icon-float" layout-padding>
+                      <label>Full name</label>
+                       <md-icon md-svg-src="/libs/material-design-icons/social/svg/design/ic_person_outline_24px.svg" class="lastname"></md-icon>
+                      <input ng-model="user.fullname" type="text">
+                    </md-input-container>
+                      <md-input-container class="md-icon-float" >
+                        <label>Email</label>
+                        <md-icon md-svg-src="/libs/material-design-icons/content/svg/design/ic_mail_24px.svg" class="email"></md-icon>
+                        <input ng-model="user.email" type="text">
+                      </md-input-container>
+                         <md-input-container class="md-icon-float" >
+                            <label>Mobile Number</label>
+                            <md-icon md-svg-src="/libs/material-design-icons/communication/svg/design/ic_call_24px.svg" class="password"></md-icon>
+                            <input ng-model="user.mobilenumber" type="text">
+                          </md-input-container>
+                    </md-content>
+                    <div></div>
+                </md-card-content>
+                 <md-button class="md-raised md-warn" ng-click="showCustomToast()">Submit</md-button>
+              </md-card>
+            </md-content>
+          </div>
+           <div flex hide-sm>
+          </div>
+  </div>
