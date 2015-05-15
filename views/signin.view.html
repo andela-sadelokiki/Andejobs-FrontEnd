@@ -1,35 +1,33 @@
-
-<div ng-controller="AndejobsCtrl" class="carddemoBasicUsage" ng-app="Andejobs">
-  <div layout>
-   <div flex >
-      </div>
-        <div flex>
-      <md-content>
-        <md-card>
-          <md-card-content>
-           <md-toolbar class="md-primary">
-              <h1 class="md-toolbar-tools">Sign In</h1>
-          </md-toolbar>
-             <md-content layout-padding class="autoScroll">
-              <md-input-container class="md-icon-float" >
-                <label>Username</label>
-                <md-icon md-svg-src="/libs/material-design-icons/editor/svg/design/ic_insert_emoticon_24px.svg" class="username"></md-icon>
-                <input ng-model="user.username" type="text">
-              </md-input-container>
-                <md-input-container class="md-icon-float" >
-                  <label>Password</label>
-                  <md-icon md-svg-src="/libs/material-design-icons/action/svg/design/ic_lock_24px.svg" class="password">
-                  </md-icon>
-                  <input ng-model="user.password" type="text">
-                </md-input-container>
-                  <md-button class="md-raised md-warn">Sign in</md-button>
-                </md-content>
-        </md-card-content>
-      </md-card>
-    </md-content>
+<div layout>
+ <div flex >
     </div>
-      <div flex >
-        </div>
+      <div flex>
+    <md-content>
+      <md-card>
+        <md-card-content>
+         <md-toolbar class="md-primary">
+            <h1 class="md-toolbar-tools">Sign In</h1>
+        </md-toolbar>
+           <md-content layout-padding class="autoScroll">
+            <md-input-container class="md-icon-float" >
+              <label>Email</label>
+              <md-icon md-svg-src="/libs/material-design-icons/editor/svg/design/ic_insert_emoticon_24px.svg" class="email"></md-icon>
+              <input ng-model="user.email" type="text">
+            </md-input-container>
+              <md-input-container class="md-icon-float" >
+                <label>Password</label>
+                <md-icon md-svg-src="/libs/material-design-icons/action/svg/design/ic_lock_24px.svg" class="password">
+                </md-icon>
+                <input ng-model="user.password" type="text">
+              </md-input-container>
+                <md-button class="md-raised md-warn" ng-click="signin()">Sign in</md-button>
+              </md-content>
+      </md-card-content>
+    </md-card>
+  </md-content>
+  </div>
+    <div flex >
+    </div>
   </div>
 </div>
   
