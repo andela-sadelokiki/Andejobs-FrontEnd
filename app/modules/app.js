@@ -1,10 +1,41 @@
-var app = angular.module('Andejobs', ['ngMaterial','ngRoute']);
+var app = angular.module('Andejobs', ['ngMaterial','ngRoute', 'ngStorage']);
 
 
-app.controller('AndejobsCtrl', ['$scope', function($scope){
+// app.controller('AndejobsCtrl', ['$scope', function($scope){
 
-  }]);
-app.controller('AndejobsCtrl', function($scope) {
+//   }]);
+app.controller('AndejobsCtrl', function($scope, $http, $localStorage, Main, $location) {
+
+  $scope.signup = function() {
+    Main.save($scope.user, function(data) {
+      console.log('data: ', data);
+    });
+  };
+
+  $scope.signin = function() {
+    Main.signin($scope.user, function(data) {
+      if (data.success === false) {
+        alert(data.success);
+      } else {
+        console.log(data);
+        $localStorage.token = data.token;
+        $location.path('/jobs');
+      }
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  $scope.signout = function() {
+    Main.logout(function() {
+        $location.path('/');
+    }, function() {
+        alert("Failed to logout!");
+    });
+  };
+
+   $scope.token = $localStorage.token;
+
     var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
     var date = new Date();
     $scope.jobs = [{
@@ -33,6 +64,9 @@ app.controller('AndejobsCtrl', function($scope) {
       description: '',
       closing_date: "Application deadline: " + date.toString(date.setDate(date.getDate() + 7)) ,
     }];
+  /*  jobs.all().success(function(data){
+      $scope.jobs = data;
+    })*/
      $scope.toastPosition = {
     bottom: false,
     top: true,
@@ -57,7 +91,7 @@ app.controller('AndejobsCtrl', function($scope) {
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
     .when('/', {
-      templateUrl:'views/home.view.html',
+      templateUrl:'views/admin.html',
       controller:'AndejobsCtrl'
     })
     .when('/signin',{
@@ -77,7 +111,28 @@ app.config(['$routeProvider', function($routeProvider){
       controller:'AndejobsCtrl'
     })
 
-}])
+}]);
+
+app.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+  return {
+      'request': function (config) {
+          config.headers = config.headers || {};
+          if ($localStorage.token) {
+              console.log('Ayo');
+              config.headers.Authorization = 'Bearer ' + $localStorage.token;
+          }
+          return config;
+      },
+      'responseError': function(response) {
+          if(response.status === 401 || response.status === 403) {
+              $location.path('/signin');
+          return $q.reject(response);
+          }
+      }
+  };
+}]);
+}]);
 
 
 
