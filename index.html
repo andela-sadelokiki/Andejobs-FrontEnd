@@ -19,8 +19,10 @@
                     <span><md-button href="#/">Andela</md-button></span>
                   </h2>
                     <span flex></span>
-                    <md-button href="#/signin">Sign in</md-button>
-                    <md-button href="#/signup">Sign up</md-button>
+                    <md-button href="#/signin" ng-show="!token">Sign in</md-button>
+                    <md-button href="#/signup" ng-show="!token">Sign up</md-button>
+                    <md-button ng-click="signout()" ng-show="token">Sign Out</md-button>
+
           </md-content>
               </div>
             </md-toolbar>
@@ -32,6 +34,8 @@
         <script type="text/javascript" src="libs/angular-material/angular-material.min.js"></script>
         <script type="text/javascript" src="libs/angular-aria/angular-aria.min.js"></script>
         <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="libs/ngstorage/ngStorage.min.js"></script>
         <script type="text/javascript" src="app/modules/app.js"></script>
+        <script type="text/javascript" src="app/services/service.js"></script>
       </body>
   </html>
