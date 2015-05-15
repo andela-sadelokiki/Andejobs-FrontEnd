@@ -24,25 +24,25 @@
                           <md-icon md-svg-src="/libs/material-design-icons/editor/svg/design/ic_insert_emoticon_24px.svg" class="username"></md-icon>
                           <input ng-model="user.username" type="text">
                         </md-input-container>
-                          <md-input-container class="md-icon-float" >
-                            <label>Email</label>
+                          <md-input-container class="md-icon-float">
+                            <!-- <label>Email</label> -->
                             <md-icon md-svg-src="/libs/material-design-icons/content/svg/design/ic_mail_24px.svg" class="email"></md-icon>
-                            <input ng-model="user.email" type="text">
+                           <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
                        </md-input-container>
                         <md-input-container class="md-icon-float" >
                           <label>Password</label>
                           <md-icon md-svg-src="/libs/material-design-icons/action/svg/design/ic_lock_24px.svg" class="password"></md-icon>
-                          <input ng-model="user.password" type="text">
+                          <input ng-model="user.password" type="password">
                         </md-input-container>
                         <md-input-container class="md-icon-float" >
-                          <label>Mobile Number</label>
+                          <!-- <label>Mobile Number</label> -->
                           <md-icon md-svg-src="/libs/material-design-icons/communication/svg/design/ic_call_24px.svg" class="password"></md-icon>
-                          <input ng-model="user.mobilenumber" type="text">
+                          <input ng-model="user.mobilenumber" type="text" placeholder="Phone Number">
                         </md-input-container>
                     </md-content>
                     <div></div>
                 </md-card-content>
-                 <md-button class="md-raised md-warn">Sign up</md-button>
+                 <md-button class="md-raised md-warn" ng-click="signup()">Sign up</md-button>
               </md-card>
             </md-content>
           </div>
