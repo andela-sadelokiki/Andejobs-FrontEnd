@@ -1,31 +1,27 @@
- <div>
+<div>
   <div class="welcome-message">
     <div>
-      <div layout="column" layout-align="center center">
+      <div class = "welcome-divider"layout="column" layout-align="center center">
         <h1>ANDEJOBS</h1>
-        <h3>Work At Andela</h3>
-        <hr class = "welcome-divider">
-        <h2>Source the world's brightest minds</h2>
+        <p>Work At Andela</p>
+        <h3 class="h3">Why Andela?</h3>
+        <hr class="divider"></hr>
+        <blockquote>Andela is a global talent accelerator that produces world-class remote developers and connects them with top employers.</blockquote>
+          <blockquote>We find the brightest young people in Africa and give them the training and mentorship needed to thrive as professionals for companies around the world.</blockquote>
       </div>
     </div>
   </div>
-    <md-divider></md-divider>
-      <div layout layout-align="center center">
-        <h3>Why Andela?</h3>
+    <div class="ccontainer"></div>
+      <div class="hirebutton" layout="column" layout-align="start center">
+      <md-divider md-inset ng-if="!$last"></md-divider>
+        <md-button href="#/jobs" class="md-raised md-primary"  >WE'RE HIRING!</md-button>
       </div>
-        <div layout="column" layout-align="center center">
-          <blockquote>Andela is a global talent accelerator that produces world-class remote developers and connects them with top employers. Andela finds the brightest young people in Africa and gives them the training and mentorship needed to thrive as professionals for companies around the world.</blockquote>
-        </div>
-          <md-divider></md-divider>
-            <div layout="column" layout-align="start center">
-              <md-button href="#/jobs" class="md-raised md-primary" layout-align="start center" >WE'RE HIRING!</md-button>
-            </div>
-           <div layout="row" layout-align="space-around center">
-              <md-button md-no-ink class="md-primary">DEVELOPER</md-button>
-              <md-button md-no-ink class="md-primary">BUSINESS</md-button>
-              <md-button md-no-ink class="md-primary">OPERATIONS</md-button>
-              <md-button md-no-ink class="md-primary">TRAINER</md-button>
+        <div class="container"></div>
+          <div class="jobs"layout="row" layout-align="space-around center">
+            <md-button md-no-ink class="md-primary">DEVELOPER</md-button>
+            <md-button md-no-ink class="md-primary">BUSINESS</md-button>
+            <md-button md-no-ink class="md-primary">OPERATIONS</md-button>
+            <md-button md-no-ink class="md-primary">TRAINER</md-button>
           </div>
-            <div layout="row" layout-align="start center">
-            </div>
-      </div>
+</div>
+
