@@ -19,23 +19,29 @@
                     <span><md-button href="#/">Andela</md-button></span>
                   </h2>
                     <span flex></span>
-                    <md-button href="#/signin" ng-show="!token">Sign in</md-button>
-                    <md-button href="#/signup" ng-show="!token">Sign up</md-button>
-                    <md-button ng-click="signout()" ng-show="token">Sign Out</md-button>
-
+                    <md-button href="#/signin" ng-hide="!token">Sign in</md-button>
+                    <md-button href="#/signup" ng-hide="!token">Sign up</md-button>
+                    <md-button ng-click="signout()" ng-hide="token">Sign Out</md-button>
+                     <md-select ng-model="someVal">
+                      <md-option value="1">Edit Profile</md-option>
+                      <md-option value="2">Sign Out</md-option>
+                    </md-select>
           </md-content>
               </div>
             </md-toolbar>
          <div ng-view></div>
         </div>
-        <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+        <script type="text/javascript" src="libs/angular/angular.js"></script>
         <script type="text/javascript" src="libs/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript" src="libs/angular-material/angular-material.min.js"></script>
         <script type="text/javascript" src="libs/angular-aria/angular-aria.min.js"></script>
         <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="libs/ngstorage/ngStorage.min.js"></script>
         <script type="text/javascript" src="app/modules/app.js"></script>
-        <script type="text/javascript" src="app/services/service.js"></script>
+        <script type="text/javascript" src="app/controllers/homectrl.js"></script>
+        <script type="text/javascript" src="app/controllers/userctrl.js"></script>
+        <script type="text/javascript" src="app/controllers/jobsctrl.js"></script>
+        <script type="text/javascript" src="app/services/userservice.js"></script>
         <script type="text/javascript" src="app/services/job.services.js"></script>
       </body>
   </html>
