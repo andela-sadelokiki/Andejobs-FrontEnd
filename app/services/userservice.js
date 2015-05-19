@@ -1,10 +1,9 @@
 'use strict';
  
 app.factory('UserService', ['$http', '$localStorage', function($http, $localStorage){
-  /*var baseUrl = "https://cryptic-wildwood-7014.herokuapp.com/api/v1/";*/
   var baseUrl = "http://localhost:3000/api";
   function changeUser(user) {
-    angular.extend(currentUser, user);
+    angular.extend(User.currentUser, user);
   }
 
   function urlBase64Decode(str) {
@@ -35,9 +34,9 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
       return user;
   }
 
-  var currentUser = getUserFromToken();
+  // var currentUser = getUserFromToken();
 
-  return {
+  var User = {
     save: function(data, success, error) {
       console.log(data);
       $http.post(baseUrl + '/users', data).success(success).error(error)
@@ -45,13 +44,16 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
     signin: function(data, success, error) {
       $http.post(baseUrl + '/authenticate', data).success(success).error(error)
     },
-    // me: function(success, error) {
-    //   $http.get(baseUrl + '/me').success(success).error(error)
-    // },
     logout: function(success) {
       changeUser({});
       delete $localStorage.token;
       success();
+    },
+    currentUser: getUserFromToken(),
+    getUser: function(userId, success, error) {
+      $http.get(baseUrl + '/users', userId).success(success).error(error)
     }
-  };  
+  }
+
+  return User;
 }]);

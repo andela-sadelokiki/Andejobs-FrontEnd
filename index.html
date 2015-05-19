@@ -12,20 +12,14 @@
           <md-content>
             <md-toolbar>
               <div class="md-toolbar-tools md-accent">
-                <md-button class="md-icon-button" aria-label="Settings">
-                <!-- <md-icon md-svg-icon="/libs/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg"></md-icon> -->
-                </md-button>
+                <!-- <md-button class="md-icon-button" aria-label="Settings">
+                </md-button> -->
+                 <md-button class="md-raised md-primary" layout="row" layout-align="end end" href = "#/">Home</md-button>
                   <h2>
-                    <span><md-button href="#/">Andela</md-button></span>
                   </h2>
                     <span flex></span>
-                    <md-button href="#/signin" ng-hide="!token">Sign in</md-button>
-                    <md-button href="#/signup" ng-hide="!token">Sign up</md-button>
-                    <md-button ng-click="signout()" ng-hide="token">Sign Out</md-button>
-                     <md-select ng-model="someVal">
-                      <md-option value="1">Edit Profile</md-option>
-                      <md-option value="2">Sign Out</md-option>
-                    </md-select>
+                    <md-button href="#/signin" ng-hide="token">Sign in</md-button>
+                    <md-button href="#/signup" ng-hide="token">Sign up</md-button>
           </md-content>
               </div>
             </md-toolbar>

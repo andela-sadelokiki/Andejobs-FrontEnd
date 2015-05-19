@@ -13,10 +13,10 @@ app.controller('HomeCtrl', function($scope, $http, $localStorage,$mdDialog, User
   }
 
   $scope.signout = function() {
-    console.log('you just clicked the signout button');
+    // console.log('you just clicked the signout button');
     
     UserService.logout(function() {
-      console.log('You are signed out');
+      // console.log('You are signed out');
       $location.path('/signout');
     }, function() {
       alert("Failed to logout!");

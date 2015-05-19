@@ -1,9 +1,9 @@
-// var app = angular.module("Andejobs");
+'use strict';
+
 app.factory('JobService',['$http','$localStorage', function($http, $localStorage){
 
-  var jobUrl = "http://localhost:3000/api/v1/jobs";
-  // var jobUrl = "https://cryptic-wildwood-7014.herokuapp.com/api/v1/jobs";
-    
+  var jobUrl = "http://localhost:3000/api/jobs";
+
   return{
     get: function(success, error){
       return $http.get(jobUrl).success(success).error(error);

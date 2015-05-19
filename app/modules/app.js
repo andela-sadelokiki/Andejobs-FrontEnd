@@ -5,7 +5,7 @@ var app = angular.module('Andejobs', ['ngMaterial','ngRoute', 'ngStorage']);
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
     .when('/', {
-      templateUrl:'views/signedin.view.html',
+      templateUrl:'views/home.view.html',
       controller:'HomeCtrl'
     })
     .when('/signin',{
@@ -26,7 +26,39 @@ app.config(['$routeProvider', function($routeProvider){
     })
     .when('/admin',{
       templateUrl:'views/admin.html',
-      controller: 'JobsCtrl'
+      controller: 'UserCtrl',
+      resolve: {
+        adminPermit: ['UserService', '$location', '$localStorage', 
+        function(UserService, $location, $localStorage){
+          if (Object.keys(UserService.currentUser).length === 0) {
+            $location.path('/signin')
+          } 
+          else if (UserService.currentUser.isAdmin) {
+            console.log(UserService.currentUser.isAdmin);
+            $location.path('/jobs');
+          }
+          //  } else {
+          //    $location.path('/signin')
+          //  }
+          // // UserService.getUser(UserService.currentUser._id function(data) {
+          //   console.log(data);
+          //   if (!data.isAdmin) {
+          //     $location.path('/admin');
+          //   } else {
+          //     $location.path('/signin')
+          //   }
+          // });
+          // var token = $localStorage.token;
+          // if(token){
+          //   UserService.getUser(function(data){
+          //     console.log(data);
+          //   });
+          // }
+          // else{
+          //   $location.path('/signin')
+          // }
+        }]
+      }
     })
     .when('/signout', {
       templateUrl: 'views/signout.html',

@@ -4,7 +4,6 @@
       <div>
         <md-toolbar layout="row">
           <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Andejobs</h1>
-          <md-button class="md-raised md-primary" ng-click="signout()">Sign Out</md-button>
         </md-toolbar>
            <md-content>
              <md-list>
@@ -13,7 +12,7 @@
                 <h3>{{item.title}}</h3>
                 <h4>{{item.location}}</h4>
                 <h5>{{item.description}}</h5>
-                <p>{{item.date_posted}}</p>
+                <p>Application Deadline: {{item.date_posted}}</p>
               </div>
                  <md-button class="md-raised md-primary" href="#/submit" style="width: 112px; ">Apply</md-button>
               <div layout="row" layout-align="start center">
