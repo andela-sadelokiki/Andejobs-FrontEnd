@@ -2,9 +2,10 @@
  
 app.factory('UserService', ['$http', '$localStorage', function($http, $localStorage){
   var baseUrl = "http://localhost:3000/api";
+
   function changeUser(user) {
     angular.extend(User.currentUser, user);
-  }
+  };
 
   function urlBase64Decode(str) {
       var output = str.replace('-', '+').replace('_', '/');
@@ -21,7 +22,7 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
               throw 'Illegal base64url string!';
       }
       return window.atob(output);
-  }
+  };
 
   function getUserFromToken() {
       var token = $localStorage.token;
@@ -29,12 +30,9 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
       if (typeof token !== 'undefined') {
           var encoded = token.split('.')[1];
           user = JSON.parse(urlBase64Decode(encoded));
-          console.log(user);
       }
       return user;
-  }
-
-  // var currentUser = getUserFromToken();
+  };
 
   var User = {
     save: function(data, success, error) {
@@ -49,11 +47,15 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
       delete $localStorage.token;
       success();
     },
+    editProfile: function(user_Id, data, success, error){
+      $http.put(baseUrl + '/users/user_id', data).success(success).error(error)
+    },
+    
     currentUser: getUserFromToken(),
     getUser: function(userId, success, error) {
       $http.get(baseUrl + '/users', userId).success(success).error(error)
     }
-  }
+  };
 
   return User;
 }]);

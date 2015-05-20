@@ -7,22 +7,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
       <meta name= "viewport" content = "initial-scale=1"/>
     </head>
-      <body> 
+      <body ng-controller = "UserCtrl"> 
         <div>
-          <md-content>
-            <md-toolbar>
-              <div class="md-toolbar-tools md-accent">
-                <!-- <md-button class="md-icon-button" aria-label="Settings">
-                </md-button> -->
-                 <md-button class="md-raised md-primary" layout="row" layout-align="end end" href = "#/">Home</md-button>
-                  <h2>
-                  </h2>
-                    <span flex></span>
-                    <md-button href="#/signin" ng-hide="token">Sign in</md-button>
-                    <md-button href="#/signup" ng-hide="token">Sign up</md-button>
-          </md-content>
-              </div>
-            </md-toolbar>
+          
          <div ng-view></div>
         </div>
         <script type="text/javascript" src="libs/angular/angular.js"></script>

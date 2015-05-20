@@ -1,4 +1,16 @@
-<div>
+<div ng-controller="HomeCtrl">
+  <md-toolbar>
+    <md-content>
+      <div class="md-toolbar-tools md-accent">
+        <md-button class="md-raised md-primary" layout="row" layout-align="end end" href = "#/">Home</md-button>
+          <h2>
+          </h2>
+            <span flex></span>
+            <md-button href="#/signin">Sign in</md-button>
+            <md-button href="#/signup">Sign up</md-button>
+    </md-content>
+      </div>
+  </md-toolbar>
   <div class="welcome-message">
     <div>
       <div class = "welcome-divider"layout="column" layout-align="center center">
@@ -23,6 +35,5 @@
             <md-button md-no-ink class="md-primary">OPERATIONS</md-button>
             <md-button md-no-ink class="md-primary">TRAINER</md-button>
           </div>
-          <md-button class="md-raised md-primary" layout="row" layout-align="end end" ng-click="signout()">Sign Out</md-button>
 </div>
 

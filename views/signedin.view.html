@@ -1,28 +1,43 @@
-<div>
-  <div class="welcome-message">
-    <div>
-      <div class = "welcome-divider"layout="column" layout-align="center center">
-       
-        </a>
-        <h1>ANDEJOBS</h1>
-        <p>Work At Andela</p>
-        <h3 class="h3">Why Andela?</h3>
-        <hr class="divider"></hr>
-        <blockquote>Andela is a global talent accelerator that produces world-class remote developers and connects them with top employers.</blockquote>
-          <blockquote>We find the brightest young people in Africa and give them the training and mentorship needed to thrive as professionals for companies around the world.</blockquote>
-      </div>
-    </div>
-  </div>
-    <div class="ccontainer"></div>
-      <div class="hirebutton" layout="column" layout-align="start center">
-      <md-divider md-inset ng-if="!$last"></md-divider>
-        <md-button href="#/jobs" class="md-raised md-primary"  >WE'RE HIRING!</md-button>
-      </div>
-        <div class="container"></div>
-          <div class="jobs"layout="row" layout-align="space-around center">
-            <md-button md-no-ink class="md-primary">DEVELOPER</md-button>
-            <md-button md-no-ink class="md-primary">BUSINESS</md-button>
-            <md-button md-no-ink class="md-primary">OPERATIONS</md-button>
-            <md-button md-no-ink class="md-primary">TRAINER</md-button>
+<div ng-controller="UserCtrl" class="gridListdemoBasicUsage" data-ng-init="hidebar()">
+  <div layout="column" style="height:500px;" class="sidenavdemoBasicUsage" ng-app="Andejobs">
+    <section layout="row" flex="">
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">User</h1>
+      </md-toolbar>
+        <md-content layout-padding="" ng-controller="LeftCtrl">
+          <div>
+            <img src="/assets/images/images%20%283%29.jpeg" class="profile">
           </div>
-</div>
+            <div>
+              <section layout="column" layout-align="start start">
+                <md-button ng-click="editProfile()">Edit Profile</md-button>
+                <md-button class="md-primary" ng-click="showAlert($event)">Alert Dialog
+                </md-button>
+                <md-button>Delete Account</md-button>
+                <md-button ng-click="signout()">Sign out</md-button>
+              </section>
+            </div>
+        </md-content>
+      </md-sidenav>
+    <md-content flex layout-padding>
+        <div>
+        <md-grid-list
+          <md-grid-list md-cols-sm="1" md-cols-md="3" md-cols-gt-md="2" md-row-height-gt-md="2:2" md-row-height="3:2" md-gutter="12px" md-gutter-gt-sm="12px">
+          <md-grid-tile class="green">
+            <img src="/assets/images/online-job-search.jpg" class="jobsearch">
+            <md-grid-tile-footer>
+             <md-button class="md-raised md-primary" href="#/jobs" >View Jobs</md-button>
+             </md-grid-tile-footer>
+          </md-grid-tile>
+          <md-grid-tile class="yellow">
+            <md-grid-tile-footer>
+               <md-button class="md-raised md-primary">Primary</md-button>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+        </md-grid-list>
+        </div>
+      <div flex></div>
+    </md-content>
+     </section>
+    </div>
