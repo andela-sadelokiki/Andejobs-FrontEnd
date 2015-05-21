@@ -7,9 +7,20 @@ app.controller('JobsCtrl', function($scope, $timeout, JobService ){
   };
 
   $scope.allJobs = [];
+  JobService.get(function (success) {
+  console.log(success);
+  $timeout(function () {
+    $scope.allJobs = success;
+    console.log($scope.allJobs);
+    return $scope.allJobs;
+  }, 500);
+}, function (err) {
+  return err;
+});
 
  $scope.submitApplication = function(){
   JobService.submit($scope.currentUser, function(){
+    console.log(data);
     $location.path('/home');
   });
 };
@@ -27,14 +38,5 @@ $scope.applicants = function(){
   });
 };
 
-JobService.get(function (success) {
-  console.log(success);
-  $timeout(function () {
-    $scope.allJobs = success;
-    console.log($scope.allJobs);
-    return $scope.allJobs;
-  }, 500);
-}, function (err) {
-  return err;
-});
+
 });

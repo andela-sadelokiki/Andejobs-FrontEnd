@@ -20,9 +20,12 @@ md-list .md-button {
   height:300px;
   background: url(/modules/core/img/intro-bg.jpg);
   background-size: cover;
-  font-family: Roboto;
+  /*font-family: 'Roboto';*/
   background-color: ;
+}
 
+.welcome-divider {
+  width: 720px;
 }
 
 .md-toolbar-tools{

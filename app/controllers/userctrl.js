@@ -1,5 +1,19 @@
-app.controller('UserCtrl', function($scope, $localStorage, UserService, $location,$timeout, $mdSidenav, $mdUtil, $log) {
+app.controller('UserCtrl', function($scope, $localStorage, UserService, $location,$timeout, $mdSidenav, $mdUtil, $log,$mdDialog) {
 
+  
+
+  $scope.alert = '';
+  $scope.showAlert = function(ev) {
+  $mdDialog.show(
+    $mdDialog.alert()
+      .parent(angular.element(document.body))
+      .title('Regstration status')
+      .content('Registration successful')
+      .ariaLabel('Alert Dialog Demo')
+      .ok('OK')
+      .targetEvent(ev)
+  );
+}
 
   $scope.currentUser = UserService.currentUser;
   $scope.bar = "checking";
@@ -17,6 +31,7 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
     UserService.signin($scope.user, function(data) {
         console.log(data);
       if (data.success === false) {
+        $location.path('/home');
         alert(data.success);
       } 
       else {
@@ -24,13 +39,8 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
         if(data.isAdmin === true){
           console.log('this is an admin')
           $location.path('/admin');
-          $scope.$apply();
         }
-        else {
-          console.log(data, 'is not admin')
-          $location.path('/signedin');
-        }
-       
+        $location.path('/signedin');
       }
     }, function(error) {
       console.log(error);
@@ -60,6 +70,21 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
     });
   };
 
+   $scope.showActionToast = function() {
+    var toast = $mdToast.simple()
+      .content('Action Toast!')
+      .action('OK')
+      .highlightAction(false)
+      .position($scope.getToastPosition());
+      $mdToast.show(toast).then(function() {
+      alert('You clicked \'OK\'.');
+    });
+  };
+// .controller('ToastCtrl', function($scope, $mdToast) {
+//   $scope.closeToast = function() {
+//     $mdToast.hide();
+//   };
+// });
  
 
   // $scope.listApplication = function(){
@@ -68,7 +93,7 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
 
   
 
- /* $scope.toggleLeft = buildToggler('left');
+  $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
 
     function buildToggler(navID) {
@@ -82,9 +107,9 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
 
       return debounceFn;
     }
-*/
   })
-  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+
+    .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.close = function () {
       $mdSidenav('left').close()
         .then(function () {
@@ -92,5 +117,33 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
         });
 
     };
-  })
+  });
+
+
+
+
+
+//   $scope.toastPosition = {
+//   bottom: false,
+//   top: true,
+//   left: false,
+//   right: true
+//   };
+
+//   $scope.getToastPosition = function() {
+//     return Object.keys($scope.toastPosition)
+//       .filter(function(pos) { return $scope.toastPosition[pos]; })
+//       .join(' ');
+//   };
+
+//   $scope.showCustomToast = function() {
+//   $mdToast.show({
+//     controller: 'AndejobsCtrl',
+//     templateUrl: 'toast-template.html',
+//     hideDelay: 6000,
+//     position: $scope.getToastPosition()
+//     });
+//   };
+
+// });
 
