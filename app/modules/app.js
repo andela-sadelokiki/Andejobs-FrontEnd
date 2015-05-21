@@ -10,8 +10,19 @@ app.config(['$routeProvider', function($routeProvider){
     })
     .when('/signedin', {
       templateUrl: 'views/signedin.view.html',
-      controller:'UserCtrl'
+      controller:'UserCtrl',
+      resolve : {
+        'allowAccess': ['UserService','$location', function(UserService, $location){
+        if(Object.keys(UserService.currentUser).length === 0){
+          $location.path('/signin');
+        }
+          else{
+            $location.path('/signedin');
+          }
+        }]
+      }
     })
+
     .when('/signin',{
       templateUrl:'views/signin.view.html',
       controller:'UserCtrl'
@@ -20,49 +31,46 @@ app.config(['$routeProvider', function($routeProvider){
       templateUrl:'views/signup.view.html',
       controller:'UserCtrl'
     })
+
     .when('/jobs',{
       templateUrl:'views/jobs.view.html',
       controller:'JobsCtrl'
     })
+
     .when('/submit',{
       templateUrl:'views/submit.view.html',
-      controller:'HomeCtrl'
+      controller:'HomeCtrl',
+      resolve : {
+        'allowAccess': ['UserService','$location', function(UserService, $location){
+        if(Object.keys(UserService.currentUser).length === 0){
+          $location.path('/signin');
+        }
+          else{
+            $location.path('/submit');
+          }
+        }]
+      }
     })
+
     .when('/home',{
       templateUrl:'views/home.view.html',
       controller: 'HomeCtrl'
     })
+
     .when('/editprofile',{
       templateUrl:'views/editprofile.view.html',
-      controller: 'UserCtrl'
+      controller: 'UserCtrl',
+      resolve : {
+        'allowAccess': ['UserService','$location', function(UserService, $location){
+        if(Object.keys(UserService.currentUser).length === 0){
+          $location.path('/signin');
+        }
+          else{
+            $location.path('/editprofile');
+          }
+        }]
+      }
     })
-
-    // .when('/admin',{
-    //   templateUrl:'views/admin.view.html',
-    //   controller: 'JobsCtrl',
-    //   resolve: {
-    //     adminPermit: ['UserService', '$location','$localStorage', 
-    //     function(UserService, $location, $localStorage){
-    //       if (Object.keys(UserService.currentUser).length === 0) {
-    //         $location.path('/signin');
-    //       } 
-    //       else if (UserService.currentUser.isAdmin === false) {
-    //         $location.path('/signin');
-    //       }
-    //       return ;
-    //       /*else{
-    //         $location.path('/signin');
-    //       }*/
-    //     }]
-    //   }
-    // })
-    // .when('/signout', {
-    //   templateUrl: 'views/signout.html',
-    //   controller: 'UserCtrl'
-    // })
-    // .otherwise({
-    //         'redirectTo' : '/'
-    //     });
 
   .when('/admin', {
     templateUrl:'views/admin.view.html',
@@ -72,12 +80,12 @@ app.config(['$routeProvider', function($routeProvider){
         if(UserService.currentUser){
           $location.path('/signin')
         }
-        else{
-          $location.path('/')
-        }
-          if(UserService.currentUser.isAdmin === false){
-            $location.path('/signin');
+          else{
+            $location.path('/')
           }
+        if(UserService.currentUser.isAdmin === false){
+          $location.path('/signin');
+        }
           return ;
         }]
       }
