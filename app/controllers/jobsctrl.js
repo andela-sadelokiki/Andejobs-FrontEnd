@@ -8,14 +8,33 @@ app.controller('JobsCtrl', function($scope, $timeout, JobService ){
 
   $scope.allJobs = [];
 
-  JobService.get(function (success) {
-    console.log(success);
-    $timeout(function () {
-      $scope.allJobs = success;
-      console.log($scope.allJobs);
-      return $scope.allJobs;
-    }, 500);
-  }, function (err) {
-    return err;
+ $scope.submitApplication = function(){
+  JobService.submit($scope.currentUser, function(){
+    $location.path('/home');
   });
+};
+
+$scope.viewApplications = function(){
+  JobService.view($scope.currentUser, function(){
+    console.log(data);
+    $location.path('/applications');
+  });
+};
+
+$scope.applicants = function(){
+  JobService.list($scope.currentUser, function(){
+    console.log(data);
+  });
+};
+
+JobService.get(function (success) {
+  console.log(success);
+  $timeout(function () {
+    $scope.allJobs = success;
+    console.log($scope.allJobs);
+    return $scope.allJobs;
+  }, 500);
+}, function (err) {
+  return err;
+});
 });
