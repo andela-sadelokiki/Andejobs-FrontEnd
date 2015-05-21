@@ -1,6 +1,7 @@
 app.controller('UserCtrl', function($scope, $localStorage, UserService, $location,$timeout, $mdSidenav, $mdUtil, $log) {
 
 
+  $scope.currentUser = UserService.currentUser;
   $scope.bar = "checking";
 
   $scope.signup = function() {
@@ -12,7 +13,7 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
   };
 
   $scope.signin = function() {
-    $scope.bar = true;
+    $scope.bar = false;
     UserService.signin($scope.user, function(data) {
         console.log(data);
       if (data.success === false) {
@@ -23,6 +24,7 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
         if(data.isAdmin === true){
           console.log('this is an admin')
           $location.path('/admin');
+          $scope.$apply();
         }
         else {
           console.log(data, 'is not admin')
@@ -44,39 +46,27 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
     });
   };
 
-  $scope.editProfile = function(){
-    UserService.editProfile(user$scope.user, function(data){
+  $scope.updateProfile = function(){
+    UserService.update($scope.currentUser, function(data){
       $location.path('/signedin');
-    }, function(error){
-      alert("Failed to update!, pls fill required fields");
+      console.log('data: ', data)
+      
     });
-  
+  };
 
-  $scope.editProfile = function() {
-    var formData = {
-      firstname: $scope.name,
-      lastname: $scope.password,
-      username: $scope.phone,
-      password: $scope.interests,
-      email: $scope.skills,
-      mobilenumber: $scope.gender
-  };
-$timeout(function() {
-  UserService.editProf(formData)
-    .then(
-      function(res) {
-        $scope.hideProg = true;
-        console.log(res.data);
-        UserService.profile();
-       },
-      function(res) {
-      $scope.hideProg = true;
-      $scope.msg = res.data.message;
+  $scope.deleteUser = function(){
+    UserService.delete($scope.currentUser, function(){
+      $location.path('/home');
     });
-$mdDialog.hide();
-}, 3000);
   };
-}
+
+ 
+
+  // $scope.listApplication = function(){
+
+  // }
+
+  
 
  /* $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
