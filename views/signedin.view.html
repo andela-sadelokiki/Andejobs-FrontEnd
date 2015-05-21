@@ -3,7 +3,8 @@
     <section layout="row" flex="">
       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">User</h1>
+      <h1 class="md-toolbar-tools">{{currentUser.firstname}} {{currentUser.lastname}}</h1>
+      <span>@{{currentUser.username}}</span>
       </md-toolbar>
         <md-content layout-padding="" ng-controller="LeftCtrl">
           <div>
@@ -11,11 +12,10 @@
           </div>
             <div>
               <section layout="column" layout-align="start start">
-                <md-button ng-click="editProfile()">Edit Profile</md-button>
-                <md-button class="md-primary" ng-click="showAlert($event)">Alert Dialog
+                <md-button href="#/editprofile">Edit Profile</md-button>
                 </md-button>
-                <md-button>Delete Account</md-button>
                 <md-button ng-click="signout()">Sign out</md-button>
+                <md-button ng-click="viewApplications()">View your applications</md-button>
               </section>
             </div>
         </md-content>
