@@ -39,22 +39,25 @@ app.factory('UserService', ['$http', '$localStorage', function($http, $localStor
       console.log(data);
       $http.post(baseUrl + '/users', data).success(success).error(error)
     },
+
     signin: function(data, success, error) {
       $http.post(baseUrl + '/authenticate', data).success(success).error(error)
     },
+
     logout: function(success) {
       changeUser({});
       delete $localStorage.token;
       success();
     },
-    editProfile: function(user_Id, data, success, error){
-      $http.put(baseUrl + '/users/user_id', data).success(success).error(error)
+
+    update: function(data, success, error){
+      $http.put(baseUrl + '/users/' + data._id, data).success(success).error(error)
     },
-    
+
+    delete: function(data, success, error){
+      $http.delete(baseUrl + '/users/' + data._id).success(success).error(error)
+    },
     currentUser: getUserFromToken(),
-    getUser: function(userId, success, error) {
-      $http.get(baseUrl + '/users', userId).success(success).error(error)
-    }
   };
 
   return User;
