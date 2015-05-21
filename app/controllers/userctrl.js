@@ -80,18 +80,6 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
       alert('You clicked \'OK\'.');
     });
   };
-// .controller('ToastCtrl', function($scope, $mdToast) {
-//   $scope.closeToast = function() {
-//     $mdToast.hide();
-//   };
-// });
- 
-
-  // $scope.listApplication = function(){
-
-  // }
-
-  
 
   $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
@@ -119,31 +107,4 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
     };
   });
 
-
-
-
-
-//   $scope.toastPosition = {
-//   bottom: false,
-//   top: true,
-//   left: false,
-//   right: true
-//   };
-
-//   $scope.getToastPosition = function() {
-//     return Object.keys($scope.toastPosition)
-//       .filter(function(pos) { return $scope.toastPosition[pos]; })
-//       .join(' ');
-//   };
-
-//   $scope.showCustomToast = function() {
-//   $mdToast.show({
-//     controller: 'AndejobsCtrl',
-//     templateUrl: 'toast-template.html',
-//     hideDelay: 6000,
-//     position: $scope.getToastPosition()
-//     });
-//   };
-
-// });
 

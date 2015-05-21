@@ -26,9 +26,10 @@ app.controller('JobsCtrl', function($scope, $timeout, JobService ){
 };
 
 $scope.viewApplications = function(){
-  JobService.view($scope.currentUser, function(){
+
+  JobService.view($scope.currentUser, function(data){
     console.log(data);
-    $location.path('/applications');
+    // $location.path('/applications');
   });
 };
 

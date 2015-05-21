@@ -77,15 +77,12 @@ app.config(['$routeProvider', function($routeProvider){
     controller: 'JobsCtrl',
     resolve: {
       'adminPermit': ['UserService','$location', function(UserService, $location){
-        if(UserService.currentUser){
+        if(UserService.currentUser.isAdmin){
           $location.path('/signin')
         }
           else{
-            $location.path('/')
+            $location.path('/admin')
           }
-        if(UserService.currentUser.isAdmin === false){
-          $location.path('/signin');
-        }
           return ;
         }]
       }
