@@ -1,7 +1,7 @@
 {
-  "name": "andejobs-frontend",
+  "name": "pair-to-learn",
   "version": "1.0.0",
-  "description": "front end for Andejobs app",
+  "description": "Pair to learn",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js", 
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:andela-sadelokiki/Andejobs-FrontEnd.git"
+    "url": "git@github.com:andela-sadelokiki/pairToLearn.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andela-sadelokiki/Andejobs-FrontEnd/issues"
+    "url": "https://github.com/andela-sadelokiki/pairToLearn/issues"
   },
-  "homepage": "https://github.com/andela-sadelokiki/Andejobs-FrontEnd",
+  "homepage": "https://github.com/andela-sadelokiki/pairToLearn",
   "devDependencies": {
     "bower": "^1.4.1",
     "jasmine-core": "^2.3.3",

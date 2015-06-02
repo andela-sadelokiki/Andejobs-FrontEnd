@@ -22,14 +22,13 @@ app.controller('UserCtrl', function($scope, $localStorage, UserService, $locatio
     UserService.save($scope.user, function(data) {
      $location.path('/home');
     }, function() {
-        alert("Failed to logout!");
+        alert("Failed to signup!");
     });
   };
 
   $scope.signin = function() {
     $scope.bar = false;
     UserService.signin($scope.user, function(data) {
-        console.log(data);
       if (data.success === false) {
         $location.path('/home');
         alert(data.success);

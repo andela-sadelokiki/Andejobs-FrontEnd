@@ -1,29 +1,28 @@
-app.controller('JobsCtrl', function($scope, $timeout, JobService ){
+app.controller('JobsCtrl', function($scope, $location, $timeout, JobService, UserService ){
 
   $scope.createJob = function(){
-    console.log('I got to the controller');
     console.log($scope.job);
     JobService.create($scope.job);
   };
 
   $scope.allJobs = [];
   JobService.get(function (success) {
-  console.log(success);
   $timeout(function () {
     $scope.allJobs = success;
-    console.log($scope.allJobs);
     return $scope.allJobs;
   }, 500);
 }, function (err) {
   return err;
 });
 
- $scope.submitApplication = function(){
-  JobService.submit($scope.currentUser, function(){
-    console.log(data);
-    $location.path('/home');
-  });
-};
+ $scope.submitApplication = function(data){
+  
+  console.log('now submit!');
+    JobService.apply($scope.user, function(data){
+      console.log('data',data);
+      $location.path('/home');
+    });
+  };
 
 $scope.viewApplications = function(){
 
